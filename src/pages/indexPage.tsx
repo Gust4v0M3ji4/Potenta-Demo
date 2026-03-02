@@ -18,20 +18,20 @@ export default function Index() {
         </div>
         
         <div className="relative z-10 text-center px-6 max-w-4xl mx-auto space-y-8">
-          <h1 className="text-5xl lg:text-7xl font-bold text-white leading-tight drop-shadow-lg">
+          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-white leading-tight drop-shadow-lg">
             Aumenta la eficiencia de tu <span className="text-[#ff5100]">producción</span>
           </h1>
-          <p className="text-xl text-zinc-200 drop-shadow">
+          <p className="text-lg sm:text-xl text-zinc-200 drop-shadow px-4 sm:px-0">
             Impulsamos la industria con tecnología e innovación de primera. Soluciones integrales en automatización e instrumentación industrial.
           </p>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <Link to="/contacto">
-              <Button size="lg" className="bg-[#ff5100] hover:bg-[#e04800] text-white font-bold tracking-widest px-8 py-6 text-sm rounded-none">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center w-full px-4 sm:px-0">
+            <Link to="/contacto" className="w-full sm:w-auto">
+              <Button size="lg" className="w-full bg-[#ff5100] hover:bg-[#e04800] text-white font-bold tracking-widest px-8 py-6 text-sm rounded-none">
                  SOLICITAR COTIZACIÓN
               </Button>
             </Link>
-            <Link to="/tienda/catalogo">
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-[#06253a] font-bold tracking-widest px-8 py-6 text-sm bg-transparent rounded-none transition-colors">
+            <Link to="/tienda/catalogo" className="w-full sm:w-auto">
+              <Button size="lg" variant="outline" className="w-full border-white text-white hover:bg-white hover:text-[#06253a] font-bold tracking-widest px-8 py-6 text-sm bg-transparent rounded-none transition-colors">
                 VER CATÁLOGO
               </Button>
             </Link>
@@ -149,15 +149,15 @@ export default function Index() {
       {/* 5. Clientes */}
       <section className="py-24 px-6 lg:px-20 bg-white">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-16">
+          <div className="mb-12 md:mb-16">
             <span className="text-[#ff5100] font-semibold text-sm uppercase tracking-widest block mb-4">Clientes</span>
-            <h2 className="text-3xl md:text-5xl font-bold text-[#06253a] max-w-4xl leading-tight">
+            <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold text-[#06253a] max-w-4xl leading-tight">
               La confianza de numerosas marcas, respalda nuestra excelencia en el sector.
             </h2>
             <div className="h-1.5 w-32 bg-[#ff5100] mt-8"></div>
           </div>
           
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-12 gap-y-16 items-center justify-items-center opacity-80 pt-8 mt-12 bg-zinc-50/50 p-12 rounded-xl">
+          <div className="grid grid-cols-3 md:grid-cols-4 gap-x-6 gap-y-12 items-center justify-items-center opacity-80 pt-8 mt-8 md:mt-12 bg-zinc-50/50 p-6 md:p-12 rounded-xl">
             <img src="https://potenta.com.ec/wp-content/uploads/2024/09/potenta-cliente-favorita.png" alt="La Favorita" className="h-10 w-auto mix-blend-multiply filter grayscale hover:grayscale-0 transition-all duration-300" />
             <img src="https://potenta.com.ec/wp-content/uploads/2024/09/potenta-cliente-pronaca.png" alt="Pronaca" className="h-10 w-auto mix-blend-multiply filter grayscale hover:grayscale-0 transition-all duration-300" />
             <img src="https://potenta.com.ec/wp-content/uploads/2024/09/potenta-cliente-tia.png" alt="Tía" className="h-14 w-auto mix-blend-multiply filter grayscale hover:grayscale-0 transition-all duration-300" />

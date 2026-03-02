@@ -76,13 +76,16 @@ export default function CatalogoComponent() {
         
         {/* SIDEBAR CATEGORÍAS */}
         <aside className="w-full md:w-72 flex-shrink-0">
-          <div className="bg-white border border-zinc-200">
-            <h3 className="font-bold text-sm px-6 py-4 bg-zinc-50 border-b border-zinc-200 text-zinc-800 uppercase tracking-widest flex justify-between items-center">
-              Segmentos
-              {selectedCategoria && (
-                <button onClick={() => setSelectedCategoria(null)} className="text-xs text-[#ff5100] hover:underline normal-case font-semibold tracking-normal">Limpiar</button>
-              )}
-            </h3>
+          <details className="bg-white border border-zinc-200 group md:open" open>
+            <summary className="font-bold text-sm px-6 py-4 bg-zinc-50 border-b border-zinc-200 text-zinc-800 uppercase tracking-widest flex justify-between items-center cursor-pointer select-none">
+              <span>Filtros / Segmentos</span>
+              <div className="flex items-center gap-4">
+                {selectedCategoria && (
+                  <button onClick={(e) => { e.preventDefault(); setSelectedCategoria(null); }} className="text-xs text-[#ff5100] hover:underline normal-case font-semibold tracking-normal">Limpiar</button>
+                )}
+                <span className="text-zinc-400 group-open:rotate-180 transition-transform md:hidden">▼</span>
+              </div>
+            </summary>
             <ul className="text-sm">
               {categorias.length === 0 && !loading && (
                  <li className="px-6 py-4 text-zinc-400">Sin segmentos disponibles</li>
@@ -91,9 +94,9 @@ export default function CatalogoComponent() {
                 <li key={idx}>
                   <button 
                     onClick={() => setSelectedCategoria(selectedCategoria === cat.nombre ? null : cat.nombre)}
-                    className={`w-full text-left px-4 py-3 border-b border-zinc-100 flex items-center justify-between group transition-colors ${selectedCategoria === cat.nombre ? 'bg-zinc-50 border-l-4 border-l-[#ff5100]' : 'hover:bg-zinc-50 border-l-4 border-transparent'}`}
+                    className={`w-full text-left px-4 py-3 border-b border-zinc-100 flex items-center justify-between group/btn transition-colors ${selectedCategoria === cat.nombre ? 'bg-zinc-50 border-l-4 border-l-[#ff5100]' : 'hover:bg-zinc-50 border-l-4 border-transparent'}`}
                   >
-                    <span className={`flex items-center transition-colors ${selectedCategoria === cat.nombre ? 'text-[#06253a] font-bold' : 'text-zinc-500 group-hover:text-[#06253a]'}`}>
+                    <span className={`flex items-center transition-colors ${selectedCategoria === cat.nombre ? 'text-[#06253a] font-bold' : 'text-zinc-500 group-hover/btn:text-[#06253a]'}`}>
                       <span className="text-zinc-300 mr-2 text-xs opacity-50">&gt;</span>
                       <span className="truncate max-w-[170px]" title={cat.nombre}>{cat.nombre}</span>
                     </span>
@@ -104,7 +107,7 @@ export default function CatalogoComponent() {
                 </li>
               ))}
             </ul>
-          </div>
+          </details>
         </aside>
 
         {/* CATÁLOGO PRODUCTOS */}

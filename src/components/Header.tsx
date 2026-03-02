@@ -1,9 +1,18 @@
-import { Link } from '@tanstack/react-router'
-import { Search, ShoppingCart, Menu } from 'lucide-react'
+import { useState, useEffect } from 'react'
+import { Link, useLocation } from '@tanstack/react-router'
+import { Search, ShoppingCart, Menu, X } from 'lucide-react'
 import { Input } from './ui/input'
 import { Button } from './ui/button'
 
 export default function Header() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const location = useLocation()
+
+  // Cerrar el menú al cambiar de ruta
+  useEffect(() => {
+    setIsMobileMenuOpen(false)
+  }, [location.pathname])
+
   return (
     <header className="w-full flex flex-col z-50">
       {/* Top Action Bar */}
@@ -47,8 +56,8 @@ export default function Header() {
             </Link>
 
             {/* Mobile Menu Toggle */}
-            <Button variant="ghost" className="lg:hidden h-10 w-10 p-0 text-[#06253a]">
-              <Menu className="h-6 w-6" />
+            <Button variant="ghost" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="lg:hidden h-10 w-10 p-0 text-[#06253a]">
+              {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </Button>
           </div>
         </div>
@@ -84,6 +93,32 @@ export default function Header() {
           </nav>
         </div>
       </div>
+
+      {/* Mobile Navigation Menu */}
+      {isMobileMenuOpen && (
+        <div className="lg:hidden absolute top-[73px] left-0 w-full bg-[#06253a] border-b border-[#041a29] shadow-lg animate-in slide-in-from-top-2">
+          <nav className="flex flex-col text-white font-bold text-sm tracking-wider uppercase divide-y divide-white/10">
+            <Link to="/" className="px-6 py-4 hover:bg-white/5 transition-colors" activeProps={{ className: 'text-[#ff5100] bg-white/5' }}>
+              INICIO
+            </Link>
+            <Link to="/tienda/catalogo" className="px-6 py-4 hover:bg-white/5 transition-colors" activeProps={{ className: 'text-[#ff5100] bg-white/5' }}>
+              CATÁLOGO
+            </Link>
+            <Link to="/promociones" className="px-6 py-4 hover:bg-white/5 transition-colors" activeProps={{ className: 'text-[#ff5100] bg-white/5' }}>
+              PROMOCIONES
+            </Link>
+            <Link to="/nosotros" className="px-6 py-4 hover:bg-white/5 transition-colors" activeProps={{ className: 'text-[#ff5100] bg-white/5' }}>
+              NOSOTROS
+            </Link>
+            <Link to="/blog" className="px-6 py-4 hover:bg-white/5 transition-colors" activeProps={{ className: 'text-[#ff5100] bg-white/5' }}>
+              BLOG
+            </Link>
+            <Link to="/contacto" className="px-6 py-4 hover:bg-white/5 transition-colors" activeProps={{ className: 'text-[#ff5100] bg-white/5' }}>
+              CONTACTO
+            </Link>
+          </nav>
+        </div>
+      )}
     </header>
   )
 }
